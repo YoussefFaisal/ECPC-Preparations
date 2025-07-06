@@ -1,0 +1,48 @@
+
+/*
+
+██████████████                   ██████████████
+
+▌║█║▌│║▌│║▌║▌█║                 ▌│║▌║▌│║║▌█║▌║█
+▌║█║▌│║▌│║▌║▌█║ Youssouf Faisal ▌│║▌║▌│║║▌█║▌║█
+▌║█║▌│║▌│║▌║▌█║                 ▌│║▌║▌│║║▌█║▌║█
+
+██████████████                   ██████████████
+
+*/
+
+
+LVL 2
+    - Complexity Analysis & Recursion
+    - STLs
+    - Static Range Queries
+    - Two Pointers & Sliding Window
+    - Binary Search
+    - Recursive Complete Search (Backtracking)
+    - Bitmasks & Iterative Complete Search
+    - Gredy & Exchange Arguments
+    - Number Theory | , ||
+
+LVL 3
+    - intor to Graphs & DFS
+    - BFS
+    - DSU & MST
+    - Dijkstra
+    - Bellman-Ford & Floyd-Warshall
+    - Recursive DP
+    - Iterative DP
+    - Printing DP Path / DP on Masks / Digit DP
+    - LCA
+    - Sparse Table
+
+LVL 4
+    - String Hashing - Rabin Karp
+    - KMP & Trie
+    - BIT
+    - Segment Tree |, ||
+    - SQRT Decomposition
+    - MO.s Algorithm
+    - DP with Data Structures & DP on KMP & Memory Reduction
+    - Euler's Graphs
+    - SCC, Bridges & Articulation Point
+
