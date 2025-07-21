@@ -5,5 +5,13 @@
   // "editor.formatOnType": true,
   "github.copilot.enable": {
     "*": false
+  },
+  "files.associations": {
+    "*.html": "django-html",
+    "deque": "cpp",
+    "string": "cpp",
+    "vector": "cpp",
+    "rope": "cpp",
+    "iostream": "cpp"
   }
 }
