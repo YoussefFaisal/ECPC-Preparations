@@ -2,7 +2,11 @@
 using namespace std;
 typedef long long ll;
 
-// Get vector with the prime factors of number
+/*
+Get vector with the prime factors of number
+Any composite number can be expressed as
+a product of two or more numbers, which are its prime factors.
+*/
 vector < int > prime_factorization(int n){
     vector < int > factors;
     while(n % 2 == 0) factors.push_back(2), n /= 2;
@@ -24,7 +28,7 @@ vector < int > factors_function(int n){
 }
 
 
-// get vector with the divisors for n
+// get vector with the divisors for n SQRT Method
 vector < int > Get_Divisors(int n){
     vector < int > divisors;
     for(int i = 1; i < sqrt(n); i++)
@@ -83,10 +87,18 @@ int Summation_of_Devisors(int a, int b, int c){
 }
 
 
-// seive primes
+// sieve primes
+/*
+Given a list of 𝑡 numbers (𝑎₀, 𝑎₁, 𝑎₂, 𝑎₃, …, 𝑎ₜ)
+Such that:
+    (0 ≤ 𝑡 ≤ 10^6)
+    (0 ≤ 𝑎ᵢ ≤ 10⁷)
+For each number 𝑎ᵢ, print whether it's prime or not.
+*/
 vector < int > is_prime;
-void Seive(int n){
+void Sieve(int n){
     is_prime.assign(n + 1, true);
+    // fill(is_prime.begin(), is_prime.end(), true);
     is_prime[0] = is_prime[1] = false;
     for(int i = 2; i <= sqrt(n); i++)
         if(is_prime[i])
@@ -105,6 +117,22 @@ void factorization(){
             factors[j]++;
         }
     }
+}
+
+/*
+Binary Exponentiation: an
+algorithm used to efficiently
+compute large powers of a
+number.
+*/
+ll binary_exponentiation(ll base, ll expo){
+    ll result = 1;
+    while(expo > 0){
+        if(expo & 1) result *= base;
+        base *= base;
+        expo >>= 1;
+    }
+    return result;
 }
 
 

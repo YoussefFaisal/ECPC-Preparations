@@ -72,6 +72,52 @@ int nCr(int n, int r){
     return p;
 }
 
+/*
+Combination with Mod:
+Modular arithmetic can be applied to compute combinations with large
+numbers, requiring the use of modular inverse to handle factorials modulo a
+given modulus.
+*/
+
+int mult(int a, int b){ return 1ll * a * b % Mod; }
+int factt[MAXN + 1];
+void buildf(){
+    // initialize first in main
+    factt[0] = 1;
+    for(int i = 1; i <= MAXN; i++)
+        factt[i] = mult(factt[i - 1], i);
+}
+int binary_exponentiation3(int base, int expo){
+    int result = 1;
+    while(expo > 0){
+        if(expo & 1) result = mult(result, base);
+        base = mult(base, base);
+        expo >>= 1;
+    }
+    return result;
+}
+int mod_inverse12(int b, int m = Mod){
+    return binary_exponentiation3(b, m - 2) % m;
+}
+int nCr_modd(int n, int r){
+    if(r > n) return 0;
+    if(r == 0 || r == n) return 1;
+    return mult(factt[n], mult(mod_inverse12(factt[r]), mod_inverse12(factt[n - r])));
+}
+int nPr_modd(int n, int r){
+    if(r > n) return 0;
+    return mult(factt[n], mod_inverse12(factt[n - r]));
+}
+
+
+// Factorial
+int factorial(int n){
+    if(n < 0) return 0;
+    int res = 1;
+    for(int i = 2; i <= n; i++) res *= i;
+    return res;
+}
+
 
 // Permutation
 int nPr(int n, int r){
@@ -101,6 +147,7 @@ void add(ll& a, int b, int mod = 1e9 + 7){
 
 
 // b power e in O(log(n))
+// Binary Exponentitation
 int fast_pow(int b, int e){
     int power = 1;
     while(e){
@@ -109,6 +156,27 @@ int fast_pow(int b, int e){
         b *= b;
     }
     return power;
+}
+
+//  Modular Inverse
+/*
+To find b^(-1) mod m, b and m must be coprime, meaning their greatest common
+divisor is 1.
+One of the methods to compute the modular inverse of b denoted by b^(-1) is
+as follows:
+    b^(−1) = b^(m − 2) mod m.
+    For this method to work, m must be prime.
+
+Fermat's Little Theorem::
+If p is a prime number and a is an integer not divisible by p, then:
+    a^(p-1) ≡ 1 (mod p)
+    a^(p-2) ≡ a^(-1) (mod p)
+hence: 
+    a^(-1) ≡ a^(p-2) (mod p)
+*/
+
+int mod_inverse(int b, int m = Mod){
+    return fast_pow(b, m - 2) % m;
 }
 
 
@@ -129,6 +197,12 @@ int fast_pow(int b, int e, int mod){
     return power % mod;
 }
 
+// add two number and take mod for them
+void add(ll& a, int b, int mod = 1e9 + 7){
+    a += b;
+    if(a >= mod)
+        a -= mod;
+}
 
 // b multiply e % mod in O(log(e))
 int fast_mul(int b, int e, int mod){
@@ -168,6 +242,10 @@ int Summation(int r, int l = 0){
     return (r * (r + 1) / 2) - (l * (l - 1) / 2);
 }
 
+// get logb(a)
+double get_log(int a, int b){
+    return log(a) / log(b);
+}
 
 // Check if number power of another or not
 const double EPS = 1e-9; // Epsilon for floating point comparison

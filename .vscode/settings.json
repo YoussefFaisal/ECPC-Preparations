@@ -12,6 +12,10 @@
     "string": "cpp",
     "vector": "cpp",
     "rope": "cpp",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "cmath": "cpp",
+    "unordered_map": "cpp",
+    "unordered_set": "cpp",
+    "string_view": "cpp"
   }
 }
