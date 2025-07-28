@@ -1,9 +1,21 @@
-#include <iostream>
-#include <vector>
-#include <cmath> // For pow
-#include <chrono>
-
+#include <bits/stdc++.h>
 using namespace std;
+
+#define cin2d(vec, n, m) for(int i = 0; i < n; i++) for(int j = 0; j < m && cin >> vec[i][j]; j++);
+#define cout2d(vec , n , m) for(int i = 0; i < n; i++, cout << "\n") for(int j = 0; j < m && cout << vec[i][j] << " "; j++);
+#define cout_map(mp) for(auto& [first, second] : mp) cout << first << " --> " << second << "\n";
+#define put(s) return void(cout << s << dl);
+#define Time cerr << "Time Taken: " << (float)clock() / CLOCKS_PER_SEC << " Secs" << "\n";
+#define fixed(n) fixed << setprecision(n)
+#define ceil(n, m) (((n) / (m)) + ((n) % (m) ? 1 : 0))
+#define Num_of_Digits(n) ((int)log10(n) + 1)
+#define all(vec) vec.begin(), vec.end()
+#define rall(vec) vec.rbegin(), vec.rend()
+#define sz(x) int(x.size())
+#define ll long long
+#define ull unsigned long long
+#define dl "\n"
+
 
 void generateSubsequencesBitwise(const vector<int> &arr)
 {
@@ -77,6 +89,102 @@ vector<vector<int>> generateSubsequences(const vector<int> &arr, int l, int r)
   findSubsequences(arr, l, r, l, current_subsequence, all_subsequences);
   return all_subsequences;
 }
+
+
+// Function to find the longest increasing subsequence in a vector of integers
+int longest_increasing_subsequence(const vector<int>& nums) {
+    if (nums.empty()) return 0;
+    vector<int> dp;
+    
+    for (int num : nums) {
+        auto it = lower_bound(dp.begin(), dp.end(), num);
+        if (it == dp.end()) {
+        dp.push_back(num); // Append to the end
+        } else {
+        *it = num; // Replace the first element greater than or equal to num
+        }
+    }
+    
+    return dp.size(); // Length of the longest increasing subsequence
+}
+
+// Function to find the longest common subsequence of two strings
+int longest_common_subsequence(const string& s1, const string& s2) {
+  int n = sz(s1), m = sz(s2);
+  vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
+
+  for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= m; j++) {
+      if (s1[i - 1] == s2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+
+  return dp[n][m];
+}
+
+// Function to find the longest common subsequence of a vector of strings
+int longest_common_subsequence(const vector<string>& strs) {
+  if (strs.empty()) return 0;
+  string lcs = strs[0];
+  for (int i = 1; i < sz(strs); i++) {
+    lcs = longest_common_subsequence(lcs, strs[i]);
+    if (lcs.empty()) break; // No common subsequence found
+  }
+  return sz(lcs);
+}
+
+
+
+// Function to find the longest increasing subsequence in a vector of strings
+vector<string> longest_increasing_subsequence(const vector<string>& strs) {
+  int n = sz(strs);
+  if (n == 0) return {};
+
+  vector<int> dp(n, 1);
+  vector<int> prev(n, -1);
+
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < i; j++) {
+      if (strs[i] > strs[j] && dp[i] < dp[j] + 1) {
+        dp[i] = dp[j] + 1;
+        prev[i] = j;
+      }
+    }
+  }
+
+  int maxLength = *max_element(dp.begin(), dp.end());
+  vector<string> lis;
+  for (int i = maxLength - 1, idx = max_element(dp.begin(), dp.end()) - dp.begin(); i >= 0; i--) {
+    lis.push_back(strs[idx]);
+    idx = prev[idx];
+  }
+  
+  reverse(lis.begin(), lis.end());
+  return lis;
+}
+
+// Function to find the longest increasing subsequence in a vector of integers
+int longest_increasing_subsequence(const vector<int>& nums) {
+    if (nums.empty()) return 0;
+    vector<int> dp;
+    
+    for (int num : nums) {
+        auto it = lower_bound(dp.begin(), dp.end(), num);
+        if (it == dp.end()) {
+        dp.push_back(num); // Append to the end
+        } else {
+        *it = num; // Replace the first element greater than or equal to num
+        }
+    }
+    
+    return dp.size(); // Length of the longest increasing subsequence
+}
+
+
 
 int main()
 {

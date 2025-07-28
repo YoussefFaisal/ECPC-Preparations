@@ -36,6 +36,29 @@ All the bitwise operations are commutative, meaning that:
   - a ^ b == b ^ a
 */
 
+#define ON(n, k) ((n) | (1 << (k)))
+#define OFF(n, k) ((n) & ~(1 << (k)))
+#define isON(n, k) (((n) >> (k)) & 1)
+// #define isON(n, k) ((n) & (1 << (k)))
+// returns boolean value indicating whether the k-th bit of n is set (1) or not (0)
+
+inline int twoPower(int k) {
+  return 1 << k;
+}
+// returns 2 raised to the power of k (2^k)
+
+inline bool isOdd(int x) {
+  return x & 1;
+}
+
+
+string getBinary(int x) {
+  string ret = "";
+  for (int i = 3; i >= 0; i--) {
+    ret += to_string(isON(x, i));
+  }
+  return ret;
+}
 /*
 BitMasking
   Bit masking is a technique used in computer programming to manipulate individual bits or groups of bits.

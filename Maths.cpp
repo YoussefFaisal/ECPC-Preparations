@@ -118,6 +118,16 @@ int factorial(int n){
     return res;
 }
 
+ll fact(ll n) { // O(n)
+    if (n == 1 || n == 0) return 1;
+    return n * fact(n - 1);
+}
+
+ll fib(ll n) {  // O(2^n)
+    if (n == 1 || n == 2) return 1;
+    return fib(n - 1) + fib(n - 2);
+}
+
 
 // Permutation
 int nPr(int n, int r){
@@ -278,6 +288,20 @@ int  any_base_to_decimal(string str, int base) {
         power = power * base;
     }
     return num;
+}
+
+// Kadane’s algorithm
+int maxSubArraySum(vector < ll > &v)
+{
+    int ret = -2e9, curr = 0;
+    for (int i = 0; i < v.size(); i++) {
+        curr = curr + v[i];
+        if (ret < curr)
+            ret = curr;
+        if (curr < 0)
+            curr = 0;
+    }
+    return ret;
 }
 
 
