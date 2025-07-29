@@ -1,3 +1,6 @@
+// Eulerian Path for Directed graphs
+// Eulerian Path is a path that visits every edge of a graph exactly once
+
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
@@ -56,8 +59,7 @@ ostream &operator<<(ostream &out, const vector<T> &v)
   return out;
 }
 
-// Eulerian Path for Directed graphs
-// Eulerian Path is a path that visits every edge of a graph exactly once
+
 
 template <typename T = int>
 struct Eulerian_Directed_Path

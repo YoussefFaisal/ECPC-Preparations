@@ -1,5 +1,5 @@
 /*
-Topological Sort using Kahn's Algorithm
+Topological Sort using Kahn's Algorithm (Graph)
 This algorithm uses a queue to process nodes with zero in-degree
 It ensures that all nodes are processed in a valid topological order
 If a cycle is detected (not all nodes are processed), it returns "IMPOSSIBLE"

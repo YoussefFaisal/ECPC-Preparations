@@ -1,3 +1,12 @@
+/*
+Tarjan's Algorithm for finding strongly connected components (SCCs) in a directed graph.
+  - Uses depth-first search (DFS) to explore the graph.
+  - Each node is assigned a depth and a low-link value.
+  - Uses depth-first search (DFS) to discover SCCs in a directed graph.
+  - Each SCC is a maximal subgraph where every vertex is reachable from every other vertex in the subgraph.
+  - The algorithm maintains a stack to keep track of the nodes in the current SCC.
+  - When a node's low-link value equals its depth, it indicates the root of an SCC.
+*/
 #include <bits/stdc++.h> // E
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
@@ -21,15 +30,7 @@ vector < int > inStack, depth, lowLink, comp;
 stack < int > st;
 int currDepth = 0;
 
-/*
-Tarjan's Algorithm for finding strongly connected components (SCCs) in a directed graph.
-  - Uses depth-first search (DFS) to explore the graph.
-  - Each node is assigned a depth and a low-link value.
-  - Uses depth-first search (DFS) to discover SCCs in a directed graph.
-  - Each SCC is a maximal subgraph where every vertex is reachable from every other vertex in the subgraph.
-  - The algorithm maintains a stack to keep track of the nodes in the current SCC.
-  - When a node's low-link value equals its depth, it indicates the root of an SCC.
-*/
+
 void tarjan(int curr){
   lowLink[curr] = depth[curr] = currDepth++;
   inStack[curr] = 1;
